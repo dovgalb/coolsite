@@ -1,15 +1,16 @@
 from django.urls import path, re_path, include
 from rest_framework import routers
 
+# from women.views import WomenAPIUpdate, WomenAPIDetailView, CategoryAPIView, CategoryDetailView, WomenAPIList
 from women.views import WomenViewSet
 
-
-router = routers.DefaultRouter()
-router.register(r'women', WomenViewSet, basename='women')
-print(router.urls)
+women_router = routers.DefaultRouter()
+women_router.register(r'women', WomenViewSet, basename="women")
+print(women_router.urls)
 
 urlpatterns = [
-    path('api/v1/', include(router.urls)),
-    # path('api/v1/womenlist/', WomenViewSet.as_view({'get': 'list'})),
-    # path('api/v1/womenlist/<int:pk>/', WomenViewSet.as_view({'put': 'update', 'delete': 'destroy'})),
+    path('api/v1/', include(women_router.urls))
+    # path('api/v1/woman/<int:pk>/', WomenAPIDetailView.as_view()),
+    # path('api/v1/category/', CategoryAPIView.as_view()),
+    # path('api/v1/category/<int:pk>/', CategoryAPIView.as_view()),
 ]
